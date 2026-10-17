@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>weather forecast</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget {
+    background-color: #F1F3F4;
+    font-family: &quot;Segoe UI&quot;;
+}</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="sidebar" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>230</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#sidebar {
+    background-color: #111827;
+}
+
+#appTitle {
+    color: #F8FAFC;
+    padding: 28px 12px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+QPushButton {
+    background-color: transparent;
+    color: #9CA3AF;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+QPushButton:hover {
+    background-color: #1F2937;
+    color: #F8FAFC;
+}
+
+QPushButton:pressed {
+    background-color: #263449;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <property name="leftMargin">
+        <number>18</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>18</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="appTitle">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #F8FAFC;</string>
+         </property>
+         <property name="text">
+          <string> WEATHERLY</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="overviewButton">
+         <property name="text">
+          <string> ⌂   Overview</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="forecastButton">
+         <property name="text">
+          <string> ☀   Forecast</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="analyticsButton">
+         <property name="text">
+          <string> ▥   Analytics</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="settingsButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>42</height>
+          </size>
+         </property>
+         <property name="text">
+          <string> ⚙   Settings</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>24</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="contentArea" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget#contentArea { background-color: #F1F3F4; }</string>
+      </property>
+      <layout class="QVBoxLayout" name="contentAreaLayout">
+       <property name="spacing">
+        <number>22</number>
+       </property>
+       <property name="leftMargin">
+        <number>36</number>
+       </property>
+       <property name="topMargin">
+        <number>28</number>
+       </property>
+       <property name="rightMargin">
+        <number>36</number>
+       </property>
+       <property name="bottomMargin">
+        <number>28</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="headerWidget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>60</height>
+          </size>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="pageTitle">
+            <property name="font">
+             <font>
+              <pointsize>26</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: #202124;</string>
+            </property>
+            <property name="text">
+             <string>Weather Dashboard</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>300</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="refreshButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>42</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #1A73E8;
+    color: white;
+    border: none;
+    border-radius: 21px;
+    padding: 8px 22px;
+    font-size: 13px;
+    font-weight: 600;
+}
+QPushButton:hover { background-color: #1765CC; }
+QPushButton:pressed { background-color: #185ABC; }</string>
+            </property>
+            <property name="text">
+             <string>↻  Refresh</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="searchBarWidget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>60</height>
+          </size>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="cityLineEdit">
+            <property name="minimumSize">
+             <size>
+              <width>280</width>
+              <height>46</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>IBeamCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {
+    background-color: white;
+    border: 1px solid #DADCE0;
+    border-radius: 23px;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: #202124;
+}
+QLineEdit:focus { border: 1.5px solid #1A73E8; }</string>
+            </property>
+            <property name="placeholderText">
+             <string>Search city...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="searchButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>46</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #1A73E8;
+    color: white;
+    border: none;
+    border-radius: 23px;
+    padding: 0px 28px;
+    font-size: 13px;
+    font-weight: 600;
+}
+QPushButton:hover { background-color: #1765CC; }
+QPushButton:pressed { background-color: #185ABC; }</string>
+            </property>
+            <property name="text">
+             <string>Search</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>200</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="currentWeatherCard" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>600</width>
+           <height>180</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#currentWeatherCard {
+    background-color: white;
+    border: 1px solid #E8EAED;
+    border-radius: 18px;
+}</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>60</number>
+          </property>
+          <property name="leftMargin">
+           <number>36</number>
+          </property>
+          <property name="topMargin">
+           <number>28</number>
+          </property>
+          <property name="rightMargin">
+           <number>36</number>
+          </property>
+          <property name="bottomMargin">
+           <number>28</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="leftInfoLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="cityNameLabel">
+              <property name="font">
+               <font>
+                <pointsize>18</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #5F6368;</string>
+              </property>
+              <property name="text">
+               <string>Cairo</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="temperatureLabel">
+              <property name="font">
+               <font>
+                <pointsize>48</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #1A73E8;</string>
+              </property>
+              <property name="text">
+               <string>24°C</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="conditionLabel">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #5F6368;</string>
+              </property>
+              <property name="text">
+               <string>Partly Cloudy</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Line" name="separatorLine">
+            <property name="styleSheet">
+             <string notr="true">color: #E8EAED;</string>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="rightInfoLayout">
+            <property name="spacing">
+             <number>14</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="humidityLabel">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #3C4043;</string>
+              </property>
+              <property name="text">
+               <string>💧  Humidity: 60%</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="windLabel">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #3C4043;</string>
+              </property>
+              <property name="text">
+               <string>💨  Wind: 12 km/h</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lastUpdatedLabel">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #9AA0A6;</string>
+              </property>
+              <property name="text">
+               <string>Last updated: --:--</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>100</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QChartView" name="temperatureChartWidget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>230</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QChartView#temperatureChartWidget {
+    background-color: white;
+    border: 1px solid #E8EAED;
+    border-radius: 18px;
+}</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="forecastSectionWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>14</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="forecastTitleLabel">
+            <property name="font">
+             <font>
+              <pointsize>15</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: #202124;</string>
+            </property>
+            <property name="text">
+             <string>7-Day Forecast</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="forecastCardsContainer" native="true">
+            <layout class="QHBoxLayout" name="forecastCardsLayout">
+             <property name="spacing">
+              <number>14</number>
+             </property>
+             <item>
+              <widget class="QWidget" name="dayCard_1" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_1 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_1">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Mon</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>☀️</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>28° / 19°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="dayCard_2" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_2 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_2">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Tue</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>⛅</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>27° / 18°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="dayCard_3" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_3 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_3">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Wed</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>🌧️</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>24° / 17°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="dayCard_4" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_4 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_4">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Thu</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>☀️</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>29° / 20°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="dayCard_5" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_5 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_5">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Fri</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>⛈️</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>22° / 16°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="dayCard_6" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_6 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_6">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Sat</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>⛅</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>26° / 18°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="dayCard_7" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QWidget#dayCard_7 { background-color: white; border: 1px solid #E8EAED; border-radius: 14px; }</string>
+               </property>
+               <layout class="QVBoxLayout" name="dayCardLayout_7">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <property name="topMargin">
+                 <number>16</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>16</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="dayLabel_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #202124;</string>
+                  </property>
+                  <property name="text">
+                   <string>Sun</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayIconLabel_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>22</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>☀️</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="dayTempLabel_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #5F6368;</string>
+                  </property>
+                  <property name="text">
+                   <string>30° / 21°</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignHCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>QtCharts.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
